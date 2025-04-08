@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malashchuk @ CV</title>
   <link rel="stylesheet" href="style.css" />
-
 </head>
 <body>
   <!-- Intro Screen with animation -->
@@ -61,12 +60,25 @@
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section contact">
-      <h2>Contact</h2>
-      <p>Email: vladok.malashuk@gmail.com</p>
-      <p>Phone: +420 728 066 195</p>
-    </section>
+   <!-- Contact -->
+<!-- Contact -->
+<section id="contact" class="section contact">
+  <h2>Contact Me</h2>
+  <form id="contact-form">
+    <div>
+      <label for="email">Your Email:</label><br>
+      <input type="email" id="email" name="email" required placeholder="your@email.com" />
+    </div>
+
+    <div>
+      <label for="message">Your Message:</label><br>
+      <textarea id="message" name="message" rows="6" required placeholder="Write your message here..."></textarea>
+    </div>
+
+    <button type="submit">Send</button>
+    <p id="status" style="margin-top: 10px;"></p>
+  </form>
+</section>
 
     <section id="test" class="section test">
       <img src="./images/MyFace.jpg" alt="ehh not loading..." width="300" height="500" />
@@ -76,7 +88,28 @@
       <p>© 2025 Malashchuk Vladyslav – <a href="https://yourwebsite.com">https://yourwebsite.com</a></p>
     </footer>
   </main>
-
+  <script>
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('status');
+  
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+  
+      const formData = new FormData(form);
+      const response = await fetch('https://formspree.io/f/mblgpnzv', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      });
+  
+      if (response.ok) {
+        status.textContent = "Thank you! Your message has been sent.";
+        form.reset();
+      } else {
+        status.textContent = "Oops! There was a problem submitting your form.";
+      }
+    });
+  </script>
   <script>
     // Set timeout for intro screen fade out and main content show
     setTimeout(() => {
