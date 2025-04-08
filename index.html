@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malashchuk @ CV</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- Intro Screen with animation -->
+  <div class="intro-screen">
+    <div class="fade-in">Malashchuk Vladyslav</div>
+  </div>
+
+  <!-- Sidebar Navigation -->
+  <nav class="navbar">
+    <a href="#home" class="logo">MV.com</a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Home Section -->
+    <section id="home" class="section home">
+      <h1>Welcome!</h1>
+      <p>My name is Vladyslav and this is my web-site.</p>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="section about">
+      <h2>About Me</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
+      <h3>Education</h3>
+      <ul>
+        <li>Brno University of Technology – Information Technology</li>
+        <li>High School of Electrical Engineering</li>
+      </ul>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section projects">
+      <h2>Projects</h2>
+      <div class="project-category">
+        <h3>Web Development</h3>
+        <p>Lorem ipsum dolor sit amet, project 1, 2, 3...</p>
+      </div>
+      <div class="project-category">
+        <h3>Mobile Apps</h3>
+        <p>Lorem ipsum dolor sit amet, mobile apps...</p>
+      </div>
+      <div class="project-category">
+        <h3>Other</h3>
+        <p>Lorem ipsum dolor sit amet, other creative stuff...</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact">
+      <h2>Contact</h2>
+      <p>Email: vladok.malashuk@gmail.com</p>
+      <p>Phone: +420 728 066 195</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Malashchuk Vladyslav – <a href="https://yourwebsite.com">https://yourwebsite.com</a></p>
+    </footer>
+  </main>
+
+  <script>
+    // Set timeout for intro screen fade out and main content show
+    setTimeout(() => {
+      document.querySelector('.intro-screen').classList.add('hide');
+      document.querySelector('main').classList.add('show');
+    }, 3000); // Fade intro and show content after 3 seconds
+  </script>
+</body>
+</html>
