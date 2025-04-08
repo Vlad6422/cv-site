@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malashchuk @ CV</title>
   <link rel="stylesheet" href="style.css" />
+
 </head>
 <body>
   <!-- Intro Screen with animation -->
   <div class="intro-screen">
     <div class="fade-in">Malashchuk Vladyslav</div>
   </div>
-
+  <button class="navbar-toggle">☰</button>
+  
   <!-- Sidebar Navigation -->
   <nav class="navbar">
-    <a href="#home" class="logo">MV.com</a>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About Me</a></li>
@@ -22,6 +23,9 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
+
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" onclick="toggleTheme()">🌗</button>
 
   <!-- Main Content -->
   <main>
@@ -36,10 +40,7 @@
       <h2>About Me</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
       <h3>Education</h3>
-      <ul>
-        <li>Brno University of Technology – Information Technology</li>
-        <li>High School of Electrical Engineering</li>
-      </ul>
+      <p>PIPUPU</p>
     </section>
 
     <!-- Projects -->
@@ -77,7 +78,73 @@
     setTimeout(() => {
       document.querySelector('.intro-screen').classList.add('hide');
       document.querySelector('main').classList.add('show');
-    }, 3000); // Fade intro and show content after 3 seconds
+    }, 3000);
+
+    // Theme handling
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle('light-theme');
+      
+      // Save theme preference
+      const isLightTheme = body.classList.contains('light-theme');
+      localStorage.setItem('theme', isLightTheme ? 'light' : 'dark');
+    }
+
+    // Load saved theme
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+      }
+    });
+
+    // Scrollspy (active link highlighting)
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.section');
+      const navLinks = document.querySelectorAll('.nav-links a');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, { threshold: 0.5 });
+
+      sections.forEach(section => observer.observe(section));
+    });
+
+    // Navbar toggle functionality for mobile
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    const navbar = document.querySelector('.navbar');
+
+    navbarToggle.addEventListener('click', () => {
+      navbar.classList.toggle('active');
+      navbarToggle.classList.toggle('open');
+    });
+
+    // Smooth scroll for navbar links
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent default anchor behavior
+
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        // Smooth scroll to the target section
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
   </script>
 </body>
 </html>
