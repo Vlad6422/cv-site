@@ -16,7 +16,6 @@ main {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
     height: 100vh;
-    margin-left: 60px;
     transition: margin-left 1s ease;
 }
 
