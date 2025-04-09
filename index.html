@@ -1,93 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Malashchuk @ CV</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Intro Screen with animation -->
-  <div class="intro-screen">
-    <div class="fade-in">Malashchuk Vladyslav</div>
-  </div>
-  <button class="navbar-toggle">☰</button>
-  
-  <!-- Sidebar Navigation -->
-  <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#test">Photo</a></li>
-    </ul>
-  </nav>
-
-  <!-- Theme Toggle Button -->
-  <button class="theme-toggle" onclick="toggleTheme()">🌗</button>
-
-  <!-- Main Content -->
-  <main>
-    <!-- Home Section -->
-    <section id="home" class="section home">
-      <h1 class="animated-text">Welcome!</h1>
-      <p class="animated-subtext">Portfolio @ Malashchuk Vladyslav</p>
-      <div class="scroll-down animated-arrow">↓</div>
-    </section>
-
-    <!-- About Me -->
-    <section id="about" class="section about">
-      <h2>About Me</h2>
-      <p>My name is Vladyslav Malashchuk. I am a final-year student at VUT FIT (Brno University of Technology, Faculty of Information Technology). I work as a Software Engineer, primarily focused on web backend development.</p>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section projects">
-      <h2>Projects</h2>
-      <div class="project-category">
-        <h3>Web Development</h3>
-        <p>Lorem ipsum dolor sit amet, project 1, 2, 3...</p>
-      </div>
-      <div class="project-category">
-        <h3>Mobile Apps</h3>
-        <p>Lorem ipsum dolor sit amet, mobile apps...</p>
-      </div>
-      <div class="project-category">
-        <h3>Other</h3>
-        <p>Lorem ipsum dolor sit amet, other creative stuff...</p>
-      </div>
-    </section>
-
-   <!-- Contact -->
-<section id="contact" class="section contact">
-  <h2>Contact Me</h2>
-  <form id="contact-form">
-    <div>
-      <label for="email">Your Email:</label><br>
-      <input type="email" id="email" name="email" required placeholder="your@email.com" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malashchuk @ CV</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Intro Screen with animation -->
+    <div class="intro-screen">
+      <div class="fade-in">Malashchuk Vladyslav</div>
     </div>
+    <button class="navbar-toggle">☰</button>
 
-    <div>
-      <label for="message">Your Message:</label><br>
-      <textarea id="message" name="message" rows="6" required placeholder="Write your message here..."></textarea>
-    </div>
+    <!-- Sidebar Navigation -->
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#study">Study</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#test">Photo</a></li>
+      </ul>
+    </nav>
 
-    <button type="submit">Send</button>
-    <p id="status" style="margin-top: 10px;"></p>
-  </form>
-</section>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" onclick="toggleTheme()">🌗</button>
 
-    <section id="test" class="section test">
-      <img src="./images/MyFace.jpg" alt="ehh not loading..." width="300" height="500" />
-    </section>
-    <!-- Footer -->
-    <footer>
-      <p>© 2025 Malashchuk Vladyslav – <a href="https://yourwebsite.com">https://yourwebsite.com</a></p>
-    </footer>
-  </main>
-  <script>
+    <!-- Main Content -->
+    <main>
+      <!-- Home Section -->
+      <section id="home" class="section home">
+        <h1 class="animated-text">Welcome!</h1>
+        <p class="animated-subtext">Portfolio @ Malashchuk Vladyslav</p>
+        <div class="scroll-down animated-arrow">↓</div>
+      </section>
+
+      <!-- About Me -->
+      <section id="about" class="section about">
+        <h2 class="section-heading">About Me</h2>
+        
+        <div class="section-content hidden">
+          <p>
+            Hello! I'm Vladyslav Malashchuk, a passionate front-end developer with a love for clean design and smooth user experiences.
+          </p>
+          <p>
+            I enjoy turning complex problems into simple, beautiful, and intuitive designs. When I’m not coding, you’ll find me exploring new tech or enjoying photography.
+          </p>
+        </div>
+      </section>
+      
+      <section id="study" class="section study">
+        <h2 class="section-heading">Study</h2>
+        
+        <div class="timeline-container">
+          <!-- Timeline list (on mobile, hide it) -->
+          <ul class="timeline">
+            <li data-target="content1" class="active">2020 — School Graduation</li>
+            <li data-target="content2">2020–2021 — KHAI (Ukraine)</li>
+            <li data-target="content3">2021 — Moving to Czech Republic</li>
+          </ul>
+        
+          <!-- Timeline content area -->
+          <div class="timeline-content">
+            <div id="content1" class="timeline-panel active">
+              <h3>School Graduation — 2020</h3>
+              <p>
+                Graduated from <a href="https://obdarovanist.kh.ua/" target="_blank">Kharkiv Lyceum "Obdarovanist"</a> in 2020 — one of the strongest and most prestigious science-focused lyceums in Ukraine. The academic environment there was highly intensive, with a strong emphasis on mathematics, physics, and computer science.
+              </p>
+              <p>
+                It wasn’t just a school — it was more like a second home. We lived on campus during the week, diving deep into studies, solving complex problems, and training our minds like athletes. Only on weekends would we return home to recharge.
+              </p>
+              <p>
+                Thanks to this rigorous training and the mentorship of incredible teachers, we were shaped into real problem solvers. This foundation allowed me to easily pass the Ukrainian university entrance exams and — after self-studying Czech — approach the Czech university entrance exams as if they were simple exercises for kids.
+              </p>
+            </div>
+        
+            <div id="content2" class="timeline-panel">
+              <h3>Studying at KHAI (2020–2021)</h3>
+              <p>
+                Enrolled at Kharkiv Aviation Institute (KHAI) to study software engineering. Even though I knew I'd be studying abroad in the future, I didn’t want to waste time — so I took the opportunity to deepen my skills while also preparing for a new life in the Czech Republic.
+              </p>
+              <p>
+                During this year, I studied Czech, passed entrance exams, and began preparing to relocate. It was also at KHAI that I first encountered C# and .NET, built my first desktop apps, and started diving into algorithms and structured programming.
+              </p>
+              <p>
+                This year also gave me my first true taste of independent student life — managing my time, tackling new challenges, and dealing with the various responsibilities that come with being a student. The experience solidified my resolve to become a part of the IT world and pursue a career in software development. It was a year that not only sharpened my technical skills but also helped me grow as a person.
+              </p>
+            </div>
+        
+            <div id="content3" class="timeline-panel">
+              <h3>Brno University of Technology (VUT FIT) — 2021–2025</h3>
+              <p>
+                In 2021, I began studying at <strong>VUT FIT (Faculty of Information Technology, Brno University of Technology)</strong> — one of the leading technical universities in the Czech Republic. This was a major step in my academic and personal journey.
+              </p>
+              <p>
+                Over the course of these four intense and rewarding years, I dove deep into the foundations of computer science. I studied a wide range of subjects, including:
+              </p>
+              <ul>
+                <li><strong>Low-level programming</strong> — from memory management and pointer arithmetic to direct work with registers and system calls.</li>
+                <li><strong>Assembly language</strong> — understanding how computers operate under the hood taught me how compilers and processors handle code.</li>
+                <li><strong>C and C++</strong> — mastering both languages for systems programming, embedded development, and performance-critical applications.</li>
+                <li><strong>C# and .NET</strong> — developing robust desktop apps and backend services using modern frameworks.</li>
+                <li><strong>Data structures & algorithms</strong> — learning how to design efficient solutions and optimize performance in real-world scenarios.</li>
+                <li><strong>Mathematics</strong> — discrete math, linear algebra, calculus, probability, and logic — all of which form the backbone of programming and problem-solving.</li>
+              </ul>
+              <p>
+                The program pushed me to my limits — with difficult exams, complex projects, and a high academic standard — but it also helped me evolve from a passionate beginner into a well-rounded software developer. The collaborative environment, project-based learning, and real-world applications were key elements in shaping who I am today.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Work -->
+      <section id="work" class="section work">
+        <h2>Work</h2>
+      </section>
+      <!-- Skills -->
+      <section id="skills" class="section skills">
+        <h2>Skills</h2>
+      </section>
+      <!-- Projects -->
+      <section id="projects" class="section projects">
+        <h2>Projects</h2>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section contact">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+          <div>
+            <label for="email">Your Email:</label><br>
+            <input type="email" id="email" name="email" required
+              placeholder="your@email.com" />
+          </div>
+
+          <div>
+            <label for="message">Your Message:</label><br>
+            <textarea id="message" name="message" rows="6" required
+              placeholder="Write your message here..."></textarea>
+          </div>
+
+          <button type="submit">Send</button>
+          <p id="status" style="margin-top: 10px;"></p>
+        </form>
+      </section>
+
+      <section id="test" class="section test">
+        <img src="./images/MyFace.jpg" alt="ehh not loading..." width="300"
+          height="500" />
+      </section>
+      <!-- Footer -->
+      <footer>
+        <p>© 2025 Malashchuk Vladyslav – <a
+            href="https://yourwebsite.com">https://yourwebsite.com</a></p>
+      </footer>
+    </main>
+    <script>
     const form = document.getElementById('contact-form');
     const status = document.getElementById('status');
   
@@ -109,7 +184,7 @@
       }
     });
   </script>
-  <script>
+    <script>
     document.querySelector('.scroll-down').addEventListener('click', () => {
   document.getElementById('about').scrollIntoView({
     behavior: 'smooth',
@@ -194,7 +269,21 @@
         });
       });
     });
+    document.querySelectorAll('.timeline li').forEach(item => {
+  item.addEventListener('click', () => {
+    // Убираем активные классы
+    document.querySelectorAll('.timeline li').forEach(i => i.classList.remove('active'));
+    document.querySelectorAll('.timeline-panel').forEach(panel => panel.classList.remove('active'));
+
+    // Добавляем активный класс к выбранному элементу и его контенту
+    item.classList.add('active');
+    const target = document.getElementById(item.dataset.target);
+    target.classList.add('active');
+  });
+});
+
+
   </script>
-  
-</body>
+
+  </body>
 </html>
