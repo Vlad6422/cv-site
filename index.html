@@ -61,7 +61,6 @@
     </section>
 
    <!-- Contact -->
-<!-- Contact -->
 <section id="contact" class="section contact">
   <h2>Contact Me</h2>
   <form id="contact-form">
@@ -166,14 +165,21 @@
     // Navbar toggle functionality for mobile
     const navbarToggle = document.querySelector('.navbar-toggle');
     const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
     navbarToggle.addEventListener('click', () => {
       navbar.classList.toggle('active');
       navbarToggle.classList.toggle('open');
     });
 
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navbar.classList.remove('active');
+        navbarToggle.classList.remove('open');
+      });
+    });
+
     // Smooth scroll for navbar links
-    const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault(); // Prevent default anchor behavior
