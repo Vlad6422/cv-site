@@ -1,10 +1,45 @@
+.animated-text {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #fff;
+    width: 0;
+    animation: typing 2s steps(12, end) forwards;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 10ch }
+  }
+  
+  .animated-subtext {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+    animation-delay: 2.2s;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  
+  .animated-arrow {
+    opacity: 0.2;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0 }
+    to { opacity: 1 }
+  }
+  
+
+
 /* Base styles */
 html, body {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
     height: 100%;
-    font-family: sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     overflow-y: hidden;
     background-color: #000;
     color: #fff;
@@ -31,15 +66,41 @@ main {
   .nav-links a.active {
     font-weight: bold;
   }
+
+
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    padding-bottom: 0; /* Remove this or set it to 0 */
+  }
+  
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(10px);
+    }
+    60% {
+      transform: translateY(5px);
+    }
+  }
+
 /* Sections */
 .section {
+    position: relative;
     height: 100vh;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
     text-align: center;
     background-color: #000;
     transition: background-color 1s ease, border-color 1s ease;
@@ -331,7 +392,6 @@ body,  .section {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 8px;
     box-sizing: border-box;
     font-size: 16px;
     transition: border-color 0.2s;
@@ -339,16 +399,15 @@ body,  .section {
 
   input[type="email"]:focus,
   textarea:focus {
-    border-color: #007BFF;
+    border-color: gray;
     outline: none;
   }
 
   button[type="submit"] {
-    background-color: #007BFF;
+    background-color: black;
     color: white;
     border: none;
     padding: 12px 20px;
-    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
     width: 100%;
@@ -365,13 +424,14 @@ body,  .section {
   }
 
 
-/* Responsive styles */
-
+/* Responsive styles: Mobile Navigation */
 @media (max-width: 768px) {
+
     .navbar {
         width: 0;
         visibility: hidden;
-        transition: width 1s ease;
+        transition: width 0.5s ease, visibility 0.5s ease;
+        overflow: hidden;
     }
 
     .navbar.active {
@@ -379,36 +439,55 @@ body,  .section {
         visibility: visible;
     }
 
-    .navbar .nav-links {
-        display: none;
+    .nav-links {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.5s ease, max-height 0.5s ease;
     }
 
     .navbar.active .nav-links {
-        display: block;
+        opacity: 1;
+        max-height: 500px; /* Adjust as needed */
     }
 
+    .logo {
+        display: none;
+    }
+
+    .navbar.active .logo {
+        display: block;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+    }
 
     .navbar-toggle {
         display: block;
         position: absolute;
         top: 20px;
         left: 20px;
-        color: #000;
+        color: #fff;
         border: none;
         font-size: 24px;
         padding: 10px;
         cursor: pointer;
         z-index: 1001;
-        background-color: rgba(0, 0, 0, 0);
-        color: black;
+        background-color: transparent;
     }
 
+    body.light-theme .navbar-toggle {
+        color: #000;
+    }
 
-    .logo {
-        display: none;
+    .theme-toggle {
+        margin-top: 12px;
+    }
+
+    .scroll-down {
+        left: 48%;
+        padding-bottom: 10vh;
     }
 }
-
 
 @media (min-width: 769px) {
     .navbar-toggle {

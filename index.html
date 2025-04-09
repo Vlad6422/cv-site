@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malashchuk @ CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -31,16 +32,15 @@
   <main>
     <!-- Home Section -->
     <section id="home" class="section home">
-      <h1>Welcome!</h1>
-      <p>My name is Vladyslav and this is my web-site.</p>
+      <h1 class="animated-text">Welcome!</h1>
+      <p class="animated-subtext">Portfolio @ Malashchuk Vladyslav</p>
+      <div class="scroll-down animated-arrow">↓</div>
     </section>
 
     <!-- About Me -->
     <section id="about" class="section about">
       <h2>About Me</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
-      <h3>Education</h3>
-      <p>PIPUPU</p>
+      <p>My name is Vladyslav Malashchuk. I am a final-year student at VUT FIT (Brno University of Technology, Faculty of Information Technology). I work as a Software Engineer, primarily focused on web backend development.</p>
     </section>
 
     <!-- Projects -->
@@ -111,6 +111,12 @@
     });
   </script>
   <script>
+    document.querySelector('.scroll-down').addEventListener('click', () => {
+  document.getElementById('about').scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+});
     // Set timeout for intro screen fade out and main content show
     setTimeout(() => {
       document.querySelector('.intro-screen').classList.add('hide');
@@ -183,5 +189,6 @@
       });
     });
   </script>
+  
 </body>
 </html>
