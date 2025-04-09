@@ -33,6 +33,135 @@
   
 
 
+
+
+
+
+/* Study Section */
+.timeline-container {
+    display: flex;
+    max-width: 1000px;
+    margin: 40px auto;
+    gap: 40px;
+}
+
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    border-left: 2px solid #666;
+    position: relative;
+    opacity: 0;
+    animation: slideInLeft 1s forwards; /* Плавное появление всей шкалы */
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.timeline li {
+    padding: 15px 20px;
+    cursor: pointer;
+    position: relative;
+    color: #aaa;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards; /* Плавное появление элементов */
+    animation-delay: calc(0.1s * var(--index)); /* Задержка для плавного эффекта */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline li::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 50px;
+    width: 14px;
+    height: 14px;
+    background-color: #666;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.timeline li.active {
+    color: #fff;
+    font-weight: bold;
+
+}
+
+
+.timeline li.active::before {
+    background-color: lightgrey;
+}
+
+.timeline-content {
+    flex-grow: 1;
+    position: relative;
+}
+
+.timeline-panel {
+    display: none;
+    opacity: 0;
+    animation: fadeInPanel 1s ease-in-out; 
+}
+
+.timeline-panel.active {
+    display: block;
+    opacity: 1;
+}
+
+@keyframes fadeInPanel {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Light theme tweaks */
+body.light-theme .timeline li {
+    color: #555;
+}
+
+body.light-theme .timeline li.active {
+    color: #111;
+}
+
+body.light-theme .timeline li::before {
+    background-color: #aaa;
+}
+
+body.light-theme .timeline li.active::before {
+    background-color: gray;
+}
+
+/* Study Section End */
+
+
+
+
+
 /* Base styles */
 html, body {
     margin: 0;
@@ -96,6 +225,7 @@ main {
 .section {
     position: relative;
     height: 100vh;
+    padding: 60px;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
@@ -424,6 +554,10 @@ body,  .section {
   }
 
 
+
+
+
+  
 /* Responsive styles: Mobile Navigation */
 @media (max-width: 768px) {
 
@@ -437,6 +571,7 @@ body,  .section {
         bottom: 0;
         width: 250px;
         visibility: visible;
+        padding: 20vh 0;
     }
 
     .navbar.active {
@@ -491,10 +626,12 @@ body,  .section {
         left: 48%;
         padding-bottom: 10vh;
     }
-}
 
-@media (min-width: 769px) {
-    .navbar-toggle {
-        display: none;
+    .navbar.active {
+        width: 250px;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 1);
+    }
+    .timeline{
+    display: none; /* Hides the element completely */
     }
 }
