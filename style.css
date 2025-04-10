@@ -225,7 +225,6 @@ main {
 .section {
     position: relative;
     height: 100vh;
-    padding: 60px;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
