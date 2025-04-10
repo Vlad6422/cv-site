@@ -560,7 +560,12 @@ body,  .section {
   
 /* Responsive styles: Mobile Navigation */
 @media (max-width: 768px) {
-
+    .fade-in{
+        font-size: 1.5rem;
+    }
+    .section {
+        padding: 0px;
+    }
     .navbar {
         transform: translateX(-100%);
         transition: transform 0.5s ease;
