@@ -225,7 +225,8 @@ main {
 .section {
     position: relative;
     height: 100vh;
-    padding: 60px;
+    padding-left: 80px;
+    padding-right: 80px;
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
@@ -564,7 +565,8 @@ body,  .section {
         font-size: 1.5rem;
     }
     .section {
-        padding: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     .navbar {
         transform: translateX(-100%);
