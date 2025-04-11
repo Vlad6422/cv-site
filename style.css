@@ -678,4 +678,10 @@ body,  .section {
     .timeline{
     display: none; /* Hides the element completely */
     }
+    #study.section h2 {
+        margin-bottom: 0px;
+    }
+    #study.section h3 {
+        margin-top: 0px;
+    }
 }
