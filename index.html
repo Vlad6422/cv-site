@@ -345,6 +345,23 @@
           target.classList.add('active');
         });
       });
+      // Анимация появления текста при прокрутке
+const animatedSections = document.querySelectorAll('.section');
+
+const appearOnScroll = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.3 // Когда 30% секции в видимой зоне
+});
+
+animatedSections.forEach(section => {
+  appearOnScroll.observe(section);
+});
+
     </script>
 
   </body>
