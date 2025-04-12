@@ -1,3 +1,43 @@
+#study.section .section-heading,
+#about.section .section-heading,
+#study.section .section-content,
+#about.section .section-content,
+#study.section p,
+#about.section p,
+#study.section h3,
+#about.section h3 {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+#study.section.visible .section-heading,
+#about.section.visible .section-heading {
+  transition-delay: 0.2s;
+  opacity: 1;
+  transform: translateY(0);
+}
+#study.section.visible .section-content,
+#about.section.visible .section-content {
+  transition-delay: 0.6s;
+  opacity: 1;
+  transform: translateY(0);
+}
+#study.section.visible p,
+#about.section.visible p {
+  transition-delay: 0.8s;
+  opacity: 1;
+  transform: translateY(0);
+}
+#study.section.visible h3,
+#about.section.visible h3 {
+  transition-delay: 0.4s;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 .animated-text {
     overflow: hidden;
     white-space: nowrap;
@@ -45,6 +85,7 @@
     gap: 40px;
 }
 
+
 .timeline {
     list-style: none;
     padding: 0;
@@ -52,20 +93,16 @@
     width: 200px;
     border-left: 2px solid #666;
     position: relative;
-    opacity: 0;
-    animation: slideInLeft 1s forwards; /* Плавное появление всей шкалы */
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
+    opacity: 0; 
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+  }
+  
+  #study.section.visible .timeline {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 1s;
+  }
 
 .timeline li {
     padding: 15px 20px;
@@ -74,8 +111,8 @@
     color: #aaa;
     transition: all 0.3s ease;
     opacity: 0;
-    animation: fadeIn 0.5s ease-in-out forwards; /* Плавное появление элементов */
-    animation-delay: calc(0.1s * var(--index)); /* Задержка для плавного эффекта */
+    animation: fadeIn 0.5s ease-in-out forwards;
+    animation-delay: calc(0.1s * var(--index));
 }
 
 @keyframes fadeIn {
@@ -640,5 +677,11 @@ body,  .section {
     }
     .timeline{
     display: none; /* Hides the element completely */
+    }
+    #study.section h2 {
+        margin-bottom: 0px;
+    }
+    #study.section h3 {
+        margin-top: 0px;
     }
 }
