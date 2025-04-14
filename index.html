@@ -32,7 +32,6 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#test">Photo</a></li>
       </ul>
     </nav>
 
@@ -190,31 +189,32 @@
         </section>
 
         <!-- Work Section -->
-<section id="work" class="section work">
-  <h2>Work</h2>
-
-  <!-- Internship at SolarWinds -->
-  <div class="work-item">
-    <div class="image-container">
-      <img src="./images/SolarWinds.png" alt="Internship at SolarWinds" />
-      <div class="tooltip-text">
-        Worked on network monitoring features using .NET
-      </div>
-    </div>
-    <p><strong>Software Developer Intern</strong></p>
-  </div>
-
-  <!-- See you soon -->
-  <div class="work-item">
-    <div class="image-container">
-      <img src="./images/Question_mark.png" alt="See you soon." />
-      <div class="tooltip-text">
-        Stay tuned to find out what's next! Life’s full of surprises 🌟
-      </div>
-    </div>
-    <p><strong>What does life have in store for us?</strong></p>
-  </div>
-</section>
+        <section id="work" class="section work">
+          <h2>Work</h2>
+        
+          <!-- Internship at SolarWinds -->
+          <div class="work-item">
+            <div class="image-container">
+              <img src="./images/SolarWinds.png" alt="Internship at SolarWinds" />
+              <div class="tooltip-text">
+                Worked on network monitoring features using .NET
+              </div>
+            </div>
+            <p><strong>Software Developer Intern</strong></p>
+          </div>
+        
+          <!-- See you soon -->
+          <div class="work-item">
+            <div class="image-container">
+              <img src="./images/Question_mark.png" alt="See you soon." />
+              <div class="tooltip-text">
+                Stay tuned to find out what's next! Life’s full of surprises 🌟
+              </div>
+            </div>
+            <p><strong>What does life have in store for us?</strong></p>
+          </div>
+        </section>
+        
 
        <!-- Skills Section -->
 <section id="skills" class="section skills">
@@ -267,10 +267,27 @@
 </section>
 
 
-        <!-- Projects Section -->
-        <section id="projects" class="section projects">
-          <h2>Projects</h2> <!-- Section heading for 'Projects' -->
-        </section>
+<section id="projects" class="section projects">
+  <h2>Projects</h2> <!-- Section heading for 'Projects' -->
+
+  <!-- Project Images Section (Top of the page) -->
+  <div class="project-images">
+    <img src="./images/MyFace.jpg" alt="ChatBot AI" class="project-image" data-description="Description of Project 1. This is where the text connected to the image will go.">
+    <img src="./images/python_tests.png" alt="Most Popular" class="project-image" data-description="Description of Project 2. This is where the text connected to the image will go.">
+    <img src="./images/chat client server.png" alt="Chat Client-Server" class="project-image" data-description="Description of Project 3. This is where the text connected to the image will go.">
+    <img src="./images/port_scanning.png" alt="Open/Closed Ports Scanner" class="project-image" data-description="Description of Project 4. This is where the text connected to the image will go.">
+    <img src="./images/form.png" alt="Google Forms Analog" class="project-image" data-description="Description of Project 5. This is where the text connected to the image will go.">
+    <img src="./images/flow_exporter.png" alt="NetFlow Exporter" class="project-image" data-description="Description of Project 5. This is where the text connected to the image will go.">
+    <img src="./images/Vut_Fit.png" alt="Eight University Projects" class="project-image" data-description="Description of Project 5. This is where the text connected to the image will go.">
+    <img src="./images/stock.png" alt="StocksMonitoring" class="project-image" data-description="Description of Project 5. This is where the text connected to the image will go.">
+  </div>
+
+  <!-- Text Section (Bottom of the page) -->
+  <div class="project-text">
+    <p id="project-description">Click on an image to see the description here.</p>
+  </div>
+</section>
+
 
         <!-- Contact Section -->
         <section id="contact" class="section contact">
@@ -295,12 +312,6 @@
             <p id="status" style="margin-top: 10px;"></p>
             <!-- Status message after form submission -->
           </form>
-        </section>
-
-        <!-- Test Section (contains image) -->
-        <section id="test" class="section test">
-          <img src="./images/MyFace.jpg" alt="ehh not loading..." width="300"
-            height="500" /> <!-- Image of the user -->
         </section>
 
         <!-- Footer Section -->
@@ -456,20 +467,42 @@ const appearOnScroll = new IntersectionObserver((entries) => {
 animatedSections.forEach(section => {
   appearOnScroll.observe(section);
 });
+const workItems = document.querySelectorAll('.work-item');
+
+const appearOnScrollWork = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible'); // Добавляем класс "visible", чтобы активировать анимацию
+    }
+  });
+}, {
+  threshold: 0.3 // Срабатывает, когда 30% элемента видно
+});
+
+workItems.forEach(item => {
+  appearOnScrollWork.observe(item);
+});
 
 document.querySelectorAll('#skills img').forEach((img, index) => {
   img.style.setProperty('--i', index + 1);
 });
 
-  document.querySelectorAll(".work-item").forEach(item => {
-    const button = item.querySelector(".image-button");
-    const details = item.querySelector(".work-details");
-
-    button.addEventListener("click", () => {
-      details.classList.toggle("visible");
+ // Ensure the DOM is fully loaded before the script runs
+ document.addEventListener("DOMContentLoaded", function() {
+    // Get all the images
+    const images = document.querySelectorAll('.project-image');
+    
+    // Get the text area where the description will be displayed
+    const textArea = document.getElementById('project-description');
+    
+    // Add event listener for each image
+    images.forEach(image => {
+      image.addEventListener('click', function() {
+        // Change the text content based on the image clicked
+        textArea.textContent = image.getAttribute('data-description');
+      });
     });
   });
-
 
 
     </script>

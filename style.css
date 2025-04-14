@@ -675,16 +675,24 @@ body,  .section {
         width: 250px;
         box-shadow: 2px 0 10px rgba(0, 0, 0, 1);
     }
-    .timeline{
-    display: none; /* Hides the element completely */
-    }
     #study.section h2 {
         margin-bottom: 0px;
+        
     }
     #study.section h3 {
         margin-top: 0px;
+        font-size: 0.8rem;
     }
-    
+    #study.section p {
+      font-size: 0.7rem;
+  }
+  .timeline-container {
+    margin: 0px;
+    gap: 10px;
+  }
+  #study.section {
+    text-align: left;
+  }  
 
 
 }
@@ -738,48 +746,54 @@ body,  .section {
 
 
 .work-item {
-    display: flex;
-    align-items: center; /* Vertically align content */
-    margin-bottom: 20px;
-    transition: transform 0.3s ease;
-    gap: 20px; /* Use gap for consistent spacing between items */
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 3s ease, transform 3s ease;
+}
+
+.work-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.work-item img {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  filter: grayscale(100%);
+  transition: filter 2s ease, transform 2s ease;
+}
+
+.work-item:hover img {
+  filter: grayscale(0);
+  transform: scale(1.2) rotate(3deg);
+}
+
+.work-item p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .work-item {
+    flex-direction: column;
+    align-items: flex-start;
+    display: block;
   }
-  
+
   .work-item img {
-    width: 150px;
-    height: auto;
-    border-radius: 10px;
-    filter: grayscale(100%);
-    transition: filter 0.5s ease, transform 0.5s ease; /* Add transform transition */
+    margin-bottom: 10px;
   }
-  
-  /* Add animation on hover */
-  .work-item:hover img {
-    filter: grayscale(0);
-    transform: scale(1.2) rotate(3deg); /* Slight zoom and tilt */
-  }
-  
-  
+
   .work-item p {
-    margin: 0; /* Reset any unwanted margin */
-    line-height: 1.5; /* Ensure text has good line spacing */
+    margin-top: 10px;
   }
-  
-  @media (max-width: 768px) {
-    .work-item {
-      flex-direction: column; /* Stack items vertically on smaller screens */
-      align-items: flex-start;
-      display: block; /* Ensure items are displayed as block elements */
-    }
-  
-    .work-item img {
-      margin-bottom: 10px; /* Space between image and text when stacked */
-    }
-  
-    .work-item p {
-      margin-top: 10px; /* Add margin-top to space out text */
-    }
-  }
+}
+
   
   #skills {
     text-align: center;
@@ -870,4 +884,52 @@ body,  .section {
       animation: flyIn 1s forwards;
     }
   }
+  .project-images {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 20px;
+    gap: 10px;
+  }
   
+  .project-images img {
+    width: 12.5%;
+    height: 200px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    filter: grayscale(100%);
+  }
+  
+  .project-images img:hover {
+    transform: scale(1.05);
+    filter: grayscale(0);
+  }
+  
+  .project-text {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .project-text p {
+    font-size: 1.5em;
+    color: #333;
+  }
+
+@media (max-width: 480px) {
+  .project-images {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+  }
+
+  .project-images img {
+    width: 45%;
+    height: 150px;
+  }
+  
+  .project-text p {
+    font-size: 1.2em;
+  }
+}
