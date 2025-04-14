@@ -675,13 +675,261 @@ body,  .section {
         width: 250px;
         box-shadow: 2px 0 10px rgba(0, 0, 0, 1);
     }
-    .timeline{
-    display: none; /* Hides the element completely */
-    }
     #study.section h2 {
         margin-bottom: 0px;
+        
     }
     #study.section h3 {
         margin-top: 0px;
+        font-size: 0.8rem;
     }
+    #study.section p {
+      font-size: 0.7rem;
+  }
+  .timeline-container {
+    margin: 0px;
+    gap: 10px;
+  }
+  #study.section {
+    text-align: left;
+  }  
+
+
+}
+.work-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  gap: 20px;
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container img {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+}
+
+.image-container:hover img {
+  filter: grayscale(0);
+}
+
+.tooltip-text {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  white-space: normal;
+  width: 200px;
+  text-align: center;
+  z-index: 2;
+}
+
+.image-container:hover .tooltip-text {
+  opacity: 1;
+}
+
+
+.work-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 3s ease, transform 3s ease;
+}
+
+.work-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.work-item img {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  filter: grayscale(100%);
+  transition: filter 2s ease, transform 2s ease;
+}
+
+.work-item:hover img {
+  filter: grayscale(0);
+  transform: scale(1.2) rotate(3deg);
+}
+
+.work-item p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .work-item {
+    flex-direction: column;
+    align-items: flex-start;
+    display: block;
+  }
+
+  .work-item img {
+    margin-bottom: 10px;
+  }
+
+  .work-item p {
+    margin-top: 10px;
+  }
+}
+
+  
+  #skills {
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  #skills h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  #skills p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Styles for images inside #skills section */
+  #skills img {
+    height: 32px;
+    opacity: 0;
+    transform: translateY(2000px) scale(0.95);
+    transition: transform 1s ease, opacity 1s ease;
+  }
+  
+  /* Animation for images inside #skills */
+  #skills.section.visible img {
+    animation: flyIn 1s forwards;
+  }
+  
+  #skills img:nth-child(n):nth-child(-n+40) {
+    animation-delay: calc(0.2s + (0.1s * (var(--i, 1)))); /* Individual delays for images */
+  }
+  
+  @keyframes flyIn {
+    0% {
+      opacity: 0;
+      transform: translateY(1000px) scale(0.9) rotateZ(100deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotateZ(0deg);
+    }
+  }
+  
+  /* In-view state */
+  #skills img.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateZ(0deg);
+    animation: flyIn 1s forwards;
+  }
+  
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    #skills.section h2 {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    #skills.section h3 {
+        margin-top: 0px;
+    }
+    #skills {
+      padding: 2rem 1rem; /* Reduce padding on small screens */
+    }
+  
+    #skills h2 {
+      font-size: 2rem; /* Slightly smaller font size for headings on mobile */
+      margin-bottom: 1.5rem;
+    }
+  
+    /* Adjust flex layout for images on small screens */
+    #skills p {
+      gap: 8px; /* Reduce space between images */
+      margin-bottom: 20px;
+    }
+  
+    #skills img {
+      height: 28px; /* Make the icons slightly smaller */
+    }
+    
+    /* Add individual delays when images enter view */
+    #skills img.in-view {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotateZ(0deg);
+      animation: flyIn 1s forwards;
+    }
+  }
+  .project-images {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 20px;
+    gap: 10px;
+  }
+  
+  .project-images img {
+    width: 12.5%;
+    height: 200px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    filter: grayscale(100%);
+  }
+  
+  .project-images img:hover {
+    transform: scale(1.05);
+    filter: grayscale(0);
+  }
+  
+  .project-text {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .project-text p {
+    font-size: 1.5em;
+    color: #333;
+  }
+
+@media (max-width: 480px) {
+  .project-images {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+  }
+
+  .project-images img {
+    width: 45%;
+    height: 150px;
+  }
+  
+  .project-text p {
+    font-size: 1.2em;
+  }
 }
