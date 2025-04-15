@@ -216,7 +216,7 @@ html, body {
 main {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
-    height: 100vh;
+    height: 80vh;
     transition: margin-left 1s ease;
 }
 
