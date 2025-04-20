@@ -40,7 +40,9 @@
 	transform: translateY(0);
 }
 
-
+.animated-subtext {
+  color: inherit;
+}
 .animated-text {
 	overflow: hidden;
 	white-space: nowrap;
