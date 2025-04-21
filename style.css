@@ -683,6 +683,26 @@ button[type="submit"]:hover {
 	opacity: 1;
 	transform: translateY(0);
 }
+/* Social Media Links */
+.social-links {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 15px;
+	margin-top: 20px;
+  }
+  
+  .social-links a img {
+	height: auto;
+	width: auto;
+	max-height: 40px; /* Adjust size for consistency */
+	transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  .social-links a:hover img {
+	transform: scale(1.1); /* Slight zoom effect */
+	filter: brightness(1.2); /* Brighten on hover */
+  }
 
 /* ===========================================
    Responsive Styles
