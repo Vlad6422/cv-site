@@ -60,8 +60,9 @@ Description: CSS styles for a personal portfolio website.
    effects and fading in text elements.
    =========================================== */
 .animated-subtext {
-  color: inherit;
+	color: inherit;
 }
+
 .animated-text {
 	overflow: hidden;
 	white-space: nowrap;
@@ -94,7 +95,7 @@ Description: CSS styles for a personal portfolio website.
 .animated-arrow {
 	opacity: 0.2;
 }
-
+/* Will be used in many section with text to animate */
 @keyframes fadeIn {
 	from {
 		opacity: 0;
@@ -127,29 +128,43 @@ Description: CSS styles for a personal portfolio website.
 	padding: 0;
 	margin: 0;
 	width: 200px;
-	border-left: 2px solid #666; /* Vertical line for timeline */
+	border-left: 2px solid #666;
+	/* Vertical line for timeline */
 	position: relative;
-	opacity: 0; /* Initially hidden */
-	transform: translateX(-30px); /* Slide-in effect */
-	transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth animation */
+	opacity: 0;
+	/* Initially hidden */
+	transform: translateX(-30px);
+	/* Slide-in effect */
+	transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+	/* Smooth animation */
 }
 
 #study.section.visible .timeline {
-	opacity: 1; /* Fully visible */
-	transform: translateX(0); /* Reset position */
-	transition-delay: 1s; /* Delay for visibility */
+	opacity: 1;
+	/* Fully visible */
+	transform: translateX(0);
+	/* Reset position */
+	transition-delay: 1s;
+	/* Delay for visibility */
 }
 
 /* Timeline items with fade-in animation */
 .timeline li {
-	padding: 15px 20px; /* Spacing inside items */
-	cursor: pointer; /* Pointer cursor on hover */
+	padding: 15px 20px;
+	/* Spacing inside items */
+	cursor: pointer;
+	/* Pointer cursor on hover */
 	position: relative;
-	color: #aaa; /* Default text color */
-	transition: all 0.3s ease; /* Smooth hover effect */
-	opacity: 0; /* Initially hidden */
-	animation: fadeIn 0.5s ease-in-out forwards; /* Fade-in animation */
-	animation-delay: calc(0.1s * var(--index)); /* Staggered animation */
+	color: #aaa;
+	/* Default text color */
+	transition: all 0.3s ease;
+	/* Smooth hover effect */
+	opacity: 0;
+	/* Initially hidden */
+	animation: fadeIn 0.5s ease-in-out forwards;
+	/* Fade-in animation */
+	animation-delay: calc(0.1s * var(--index));
+	/* Staggered animation */
 }
 
 .timeline li::before {
@@ -202,6 +217,7 @@ Description: CSS styles for a personal portfolio website.
 		transform: translateY(0);
 	}
 }
+
 /* ===========================================
    Light Theme Adjustments
    This section tweaks the styles for the light 
@@ -591,6 +607,12 @@ body,
 }
 
 
+/* ===========================================
+   Contact Section
+   This section contains styles for the contact 
+   form, including layout and input styles.
+   =========================================== */
+
 #contact {
 	max-width: 500px;
 	margin: 0 auto;
@@ -647,6 +669,19 @@ button[type="submit"]:hover {
 	text-align: center;
 	font-size: 14px;
 	color: gray;
+}
+
+/* Initial state for the contact section */
+.section.contact {
+	opacity: 0;
+	transform: translateY(50px);
+	transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Visible state for the contact section */
+.section.contact.visible {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 /* ===========================================
@@ -783,6 +818,7 @@ button[type="submit"]:hover {
 	display: inline-block;
 }
 
+
 .image-container img {
 	width: 150px;
 	height: auto;
@@ -817,7 +853,7 @@ button[type="submit"]:hover {
 	opacity: 1;
 }
 
-
+/* Work Section */
 .work-item {
 	display: flex;
 	align-items: center;
@@ -972,6 +1008,7 @@ button[type="submit"]:hover {
 		animation: flyIn 1s forwards;
 	}
 }
+
 /* Project Images Section */
 .project-images {
 	display: flex;
@@ -989,6 +1026,7 @@ button[type="submit"]:hover {
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease-in-out;
 	filter: grayscale(100%);
+	transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project-images img:hover {
@@ -1005,8 +1043,9 @@ button[type="submit"]:hover {
 	font-size: 1.5em;
 	color: #333;
 }
+
 /* Project text and photos styles for mobiles */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 	.project-images {
 		flex-wrap: nowrap;
 		overflow-x: auto;
@@ -1022,3 +1061,53 @@ button[type="submit"]:hover {
 		font-size: 1.2em;
 	}
 }
+/* Initial state for project images */
+.project-images img {
+	opacity: 0;
+	transform: scale(0.8);
+	transition: opacity 2s ease-out, transform 2s ease-out;
+}
+
+/* Visible state for project images */
+.project-images img.visible {
+	opacity: 1;
+	transform: scale(1);
+}
+
+/* Initial state for project text */
+.project-text p {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Visible state for project text */
+.project-text p.visible {
+	opacity: 1;
+	transform: translateY(0);
+	color: white;
+}
+body.light-theme .project-text p.visible{
+	color: black;
+}
+
+.project-text p {
+	animation: none;
+}
+
+.project-text p.animate {
+	animation: fadeIn 0.5s ease-out;
+}
+/* Hover animation for project images */
+
+  .project-images img:hover {
+	transform: scale(1.1) rotate(3deg); /* Scale up and rotate slightly */
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a stronger shadow */
+	filter: grayscale(0); /* Remove grayscale on hover */
+  }
+  @media (max-width: 768px) {
+	.project-images img:hover {
+	  transform: scale(1.05); /* Slightly smaller scale for mobile */
+	  rotate: (0deg); /* Remove rotation for simplicity */
+	}
+  }
