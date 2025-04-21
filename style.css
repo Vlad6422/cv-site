@@ -1,3 +1,17 @@
+/*
+Author: Malashchuk Vladyslav (xmalas04)
+Date: 2025-04-21
+Description: CSS styles for a personal portfolio website.
+*/
+
+
+/* ===========================================
+   Section Visibility Animations
+   This section handles animations for making 
+   sections and their content visible when they 
+   come into view.
+   =========================================== */
+
 #study.section .section-heading,
 #about.section .section-heading,
 #study.section .section-content,
@@ -40,6 +54,11 @@
 	transform: translateY(0);
 }
 
+/* ===========================================
+   Typing and Fade-In Animations
+   This section defines animations for typing 
+   effects and fading in text elements.
+   =========================================== */
 .animated-subtext {
   color: inherit;
 }
@@ -78,14 +97,21 @@
 
 @keyframes fadeIn {
 	from {
-		opacity: 0
+		opacity: 0;
+		transform: translateY(10px);
 	}
 
 	to {
-		opacity: 1
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
 
+/* ===========================================
+   Study Section
+   This section contains styles for the study 
+   timeline, including animations and layout.
+   =========================================== */
 
 /* Study Section */
 .timeline-container {
@@ -95,46 +121,35 @@
 	gap: 40px;
 }
 
-
+/* Timeline container styles */
 .timeline {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 	width: 200px;
-	border-left: 2px solid #666;
+	border-left: 2px solid #666; /* Vertical line for timeline */
 	position: relative;
-	opacity: 0;
-	transform: translateX(-30px);
-	transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+	opacity: 0; /* Initially hidden */
+	transform: translateX(-30px); /* Slide-in effect */
+	transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth animation */
 }
 
 #study.section.visible .timeline {
-	opacity: 1;
-	transform: translateX(0);
-	transition-delay: 1s;
+	opacity: 1; /* Fully visible */
+	transform: translateX(0); /* Reset position */
+	transition-delay: 1s; /* Delay for visibility */
 }
 
+/* Timeline items with fade-in animation */
 .timeline li {
-	padding: 15px 20px;
-	cursor: pointer;
+	padding: 15px 20px; /* Spacing inside items */
+	cursor: pointer; /* Pointer cursor on hover */
 	position: relative;
-	color: #aaa;
-	transition: all 0.3s ease;
-	opacity: 0;
-	animation: fadeIn 0.5s ease-in-out forwards;
-	animation-delay: calc(0.1s * var(--index));
-}
-
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-		transform: translateY(10px);
-	}
-
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+	color: #aaa; /* Default text color */
+	transition: all 0.3s ease; /* Smooth hover effect */
+	opacity: 0; /* Initially hidden */
+	animation: fadeIn 0.5s ease-in-out forwards; /* Fade-in animation */
+	animation-delay: calc(0.1s * var(--index)); /* Staggered animation */
 }
 
 .timeline li::before {
@@ -187,6 +202,11 @@
 		transform: translateY(0);
 	}
 }
+/* ===========================================
+   Light Theme Adjustments
+   This section tweaks the styles for the light 
+   theme, including colors and visibility.
+   =========================================== */
 
 /* Light theme tweaks */
 body.light-theme .timeline li {
@@ -207,6 +227,11 @@ body.light-theme .timeline li.active::before {
 
 /* Study Section End */
 
+/* ===========================================
+   Base Styles
+   This section defines global styles for the 
+   body, scroll behavior, and transitions.
+   =========================================== */
 
 /* Base styles */
 html,
@@ -291,6 +316,13 @@ html {
 	background-color: #000;
 	transition: background-color 1s ease, border-color 1s ease;
 }
+
+
+/* ===========================================
+   Navbar and Navigation
+   This section contains styles for the navbar, 
+   navigation links, and hover effects.
+   =========================================== */
 
 /* Navbar styles */
 .navbar {
@@ -608,15 +640,21 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-	background-color: #0056b3;
+	background-color: gray;
 }
 
 #status {
 	text-align: center;
 	font-size: 14px;
-	color: green;
+	color: gray;
 }
 
+/* ===========================================
+   Responsive Styles
+   This section adjusts styles for smaller 
+   screens, including mobile navigation and 
+   layout tweaks.
+   =========================================== */
 
 /* Responsive styles: Mobile Navigation */
 @media (max-width: 768px) {
@@ -722,9 +760,14 @@ button[type="submit"]:hover {
 	#study.section {
 		text-align: left;
 	}
-
-
 }
+
+/* ===========================================
+   Work Section
+   This section contains styles for the work 
+   items, including layout and animations. Photo
+   gallery and project images.
+   =========================================== */
 
 .work-item {
 	display: flex;
@@ -825,6 +868,13 @@ button[type="submit"]:hover {
 }
 
 
+/* ===========================================
+   Skills Section
+   This section contains styles for the skills 
+   icons, including layout and animations. JavaScript
+   is used to add the "in-view" class for animation.
+   =========================================== */
+
 #skills {
 	text-align: center;
 	overflow: hidden;
@@ -922,7 +972,7 @@ button[type="submit"]:hover {
 		animation: flyIn 1s forwards;
 	}
 }
-
+/* Project Images Section */
 .project-images {
 	display: flex;
 	justify-content: space-between;
@@ -955,7 +1005,7 @@ button[type="submit"]:hover {
 	font-size: 1.5em;
 	color: #333;
 }
-
+/* Project text and photos styles for mobiles */
 @media (max-width: 768px) {
 	.project-images {
 		flex-wrap: nowrap;
